@@ -1,8 +1,6 @@
 // TODO: Include packages needed for this application
 import inquirer from 'inquirer';
 import fs from 'fs'
-// TODO: Create an array of questions for user input
-const questions = [];
 
 inquirer
   .prompt([
@@ -25,6 +23,12 @@ inquirer
         type: 'input',
         message: 'What about usage instructions? How do the people use your project?',
         name: 'usage',
+      },
+      {
+        type: 'list',
+        message: 'What license does your project fall under?',
+        name: 'lice',
+        choices: ['MIT', 'ISC', 'The Unlicense']
       },
     {
         type: 'input',
@@ -49,8 +53,30 @@ inquirer
     
   ])
   .then((answers) => {
-    // Use user feedback for... whatever!!
+    let licenseInfo = `N/A`
+    let licenseBadge = ``
+    if (answers.lice === 'MIT') {
+      licenseInfo = `This project is covered under the MIT license. More information about the license can be found [here](https://opensource.org/license/mit/)`
+      licenseBadge = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+    }
+    else if (answers.lice === 'ISC') {
+      licenseInfo = `This project is covered under the ISC license. More information about the license can be found [here](https://opensource.org/license/isc-license-txt/)`
+      licenseBadge = `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`
+    }
+    else if (answers.lice === 'The Unlicense') {
+      licenseInfo = `This project is covered under the Unlicense license. More information about the license can be found [here](https://unlicense.org/)`
+      licenseBadge = `[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)`
+    }
     let content = `# ${answers.projName}
+
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
 
 ## Description
 ---
@@ -66,7 +92,8 @@ ${answers.usage}
       
 ## License
 ---
-temp
+${licenseInfo}
+${licenseBadge}
       
 ## Contributing
 ---
@@ -79,7 +106,7 @@ ${answers.test}
 ## Questions?
 ---
 Have questions? Submit them through the methods below!<br>  
-- GitHub: ${answers.hub}  <br>  
+- GitHub: [${answers.hub}](https://github.com/${answers.hub.trim()})  <br>  
 - Email: ${answers.mail}  <br>  
     
 `
