@@ -56,15 +56,15 @@ inquirer
     let licenseInfo = `N/A`
     let licenseBadge = ``
     if (answers.lice === 'MIT') {
-      licenseInfo = `This project is covered under the MIT license. More information about the license can be found [here](https://opensource.org/license/mit/)`
+      licenseInfo = `This project is covered under the MIT license. More information about the license can be found [here] (https://opensource.org/license/mit/)`
       licenseBadge = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
     }
     else if (answers.lice === 'ISC') {
-      licenseInfo = `This project is covered under the ISC license. More information about the license can be found [here](https://opensource.org/license/isc-license-txt/)`
+      licenseInfo = `This project is covered under the ISC license. More information about the license can be found [here] (https://opensource.org/license/isc-license-txt/)`
       licenseBadge = `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`
     }
     else if (answers.lice === 'The Unlicense') {
-      licenseInfo = `This project is covered under the Unlicense license. More information about the license can be found [here](https://unlicense.org/)`
+      licenseInfo = `This project is covered under the Unlicense license. More information about the license can be found [here] (https://unlicense.org/)`
       licenseBadge = `[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)`
     }
     let content = `# ${answers.projName}
